@@ -66,7 +66,6 @@ void *adrenotools_open_libvulkan(int dlopenFlags, int featureFlags, const char *
     auto hookImpl{linkernsbypass_namespace_dlopen("libhook_impl.so", RTLD_NOW, hookNs)};
     if (!hookImpl)
         return nullptr;
-
     // Pass parameters to the hook implementation
     auto initHookParam{reinterpret_cast<void (*)(const void *)>(dlsym(hookImpl, "init_hook_param"))};
     if (!initHookParam)
